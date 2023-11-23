@@ -67,7 +67,53 @@ def fill_board(board):
 
 
 def check_board(board):
-    
+    row_numbers = []
+    column_numbers = []
+    is_present = 0
+    row_counter = 1
+    column_counter = 1
+
+    for row in range(0, 25, 3):
+        for field in range(3):
+            row_numbers.append(int(board[row][field]))
+            row_numbers.append(int(board[row + 1][field]))
+            row_numbers.append(int(board[row + 2][field]))
+        for number in range(10):
+            if number in row_numbers:
+                is_present += 1
+        if is_present == 9:
+            print(f"Row {row_counter} match Sudoku rules")
+        else:
+            print(f"Row {row_counter} not match Sudoku rules")
+        row_numbers = []
+        is_present = 0
+        row_counter += 1
+
+    print("")
+
+    for column in range(3):
+        for field in range(3):
+            column_numbers.append(int(board[column][field]))
+            column_numbers.append(int(board[column + 3][field]))
+            column_numbers.append(int(board[column + 6][field]))
+            column_numbers.append(int(board[column + 9][field]))
+            column_numbers.append(int(board[column + 12][field]))
+            column_numbers.append(int(board[column + 15][field]))
+            column_numbers.append(int(board[column + 18][field]))
+            column_numbers.append(int(board[column + 21][field]))
+            column_numbers.append(int(board[column + 24][field]))
+
+            for number in range(10):
+                if number in column_numbers:
+                    is_present += 1
+            if is_present == 9:
+                print(f"Column {column_counter} match Sudoku rules")
+            else:
+                print(f"Column {column_counter} not match Sudoku rules")
+
+            column_numbers = []
+            is_present = 0
+            column_counter += 1
     return 0
 
 
